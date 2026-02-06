@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ff758c" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>For My Valentine ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    :root {
+      --primary-pink: #ff6b9d;
+      --secondary-pink: #ff7eb3;
+      --accent-gold: #ffeb3b;
+      --deep-pink: #ff1744;
+      --soft-white: rgba(255, 255, 255, 0.95);
+      --glass-bg: rgba(255, 255, 255, 0.15);
+      --glass-border: rgba(255, 255, 255, 0.25);
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 35%, #ff9a9e 70%, #ffb3ba 100%);
+      background-attachment: fixed;
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      color: #fff;
+      overflow: hidden;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    /* Progress Bar */
+    #progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-gold), var(--primary-pink), var(--deep-pink));
+      z-index: 1000;
+      transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 2px 20px rgba(255, 235, 59, 0.6);
+    }
+
+    /* Page counter - more elegant */
+    #pageCounter {
+      position: fixed;
+      top: 25px;
+      right: 25px;
+      z-index: 999;
+      background: var(--glass-bg);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    #pageCounter:hover {
+      transform: scale(1.05);
+      background: rgba(255,255,255,0.25);
+    }
+
+    /* Sparkle effect - enhanced */
+    .sparkle {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background: #fff;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 15;
+      animation: sparkleFloat 2.5s ease-out forwards;
+      box-shadow: 0 0 15px #fff, 0 0 25px var(--accent-gold);
+    }
+
+    @keyframes sparkleFloat {
+      0% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(0deg);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-150px) scale(0) rotate(360deg);
+      }
+    }
+
+    /* Floating hearts - more elegant */
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      width: 18px;
+      height: 18px;
+      background: linear-gradient(135deg, var(--primary-pink), var(--deep-pink));
+      transform: rotate(45deg);
+      animation: floatUp 10s ease-in-out infinite;
+      opacity: 0.8;
+      pointer-events: none;
+      filter: drop-shadow(0 0 8px rgba(255, 107, 157, 0.9));
+    }
+    .heart::before, .heart::after {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background: linear-gradient(135deg, var(--primary-pink), var(--deep-pink));
+      border-radius: 50%;
+    }
+    .heart::before { left: -9px; }
+    .heart::after { top: -9px; }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(45deg) scale(0.8); opacity: 0; }
+      10% { opacity: 0.9; }
+      50% { transform: translateY(-50vh) rotate(45deg) scale(1.1); }
+      100% { transform: translateY(-120vh) rotate(45deg) scale(0.8); opacity: 0; }
+    }
+
+    /* Sophisticated animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(60px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    @keyframes glow {
+      0%, 100% { 
+        text-shadow: 2px 2px 15px rgba(0,0,0,0.3), 
+                     0 0 25px rgba(255, 235, 59, 0.4),
+                     0 0 40px rgba(255, 107, 157, 0.3); 
+      }
+      50% { 
+        text-shadow: 2px 2px 20px rgba(0,0,0,0.4), 
+                     0 0 35px rgba(255, 235, 59, 0.6),
+                     0 0 60px rgba(255, 107, 157, 0.5); 
+      }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+
+    /* Page container - sophisticated full screen */
+    .page {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      text-align: center;
+      padding: clamp(15px, 4vw, 30px) clamp(15px, 4vw, 30px);
+      padding-top: clamp(60px, 8vw, 80px);
+      padding-bottom: clamp(30px, 6vw, 50px);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(100%) scale(0.95);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+      overflow-x: hidden;
+      will-change: transform, opacity;
+      box-sizing: border-box;
+    }
+
+    .page.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0) scale(1);
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .page.prev {
+      transform: translateX(-100%) scale(0.95);
+    }
+
+    /* Typography - sophisticated hierarchy */
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(3.5rem, 12vw, 7rem);
+      margin-bottom: 30px;
+      animation: glow 4s ease-in-out infinite;
+      text-shadow: 3px 3px 15px rgba(0,0,0,0.3);
+      line-height: 1.1;
+      font-weight: 400;
+      letter-spacing: 2px;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 6vw, 3.5rem);
+      margin-bottom: clamp(25px, 5vw, 40px);
+      margin-top: clamp(10px, 3vw, 20px);
+      text-shadow: 2px 2px 12px rgba(0,0,0,0.25);
+      line-height: 1.3;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      -webkit-hyphens: auto;
+      hyphens: auto;
+      padding: 0 clamp(10px, 3vw, 20px);
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    h3 {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(2rem, 6vw, 3rem);
+      margin-bottom: 25px;
+      color: var(--accent-gold);
+      text-shadow: 0 0 20px rgba(255, 235, 59, 0.7);
+      font-weight: 600;
+    }
+
+    .intro-text {
+      font-size: clamp(1.2rem, 4vw, 1.6rem);
+      opacity: 0.98;
+      max-width: 750px;
+      line-height: 2;
+      margin-bottom: 50px;
+      font-weight: 300;
+      letter-spacing: 0.5px;
+    }
+
+    /* Love card - glassmorphism sophisticated */
+    .love-card {
+      background: var(--glass-bg);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      backdrop-filter: blur(20px) saturate(180%);
+      border-radius: clamp(25px, 5vw, 35px);
+      padding: clamp(25px, 5vw, 50px);
+      margin: clamp(20px, 4vw, 35px) auto;
+      max-width: min(850px, 95%);
+      width: 100%;
+      box-shadow: 0 30px 70px rgba(0,0,0,0.4), 
+                  inset 0 1px 0 rgba(255,255,255,0.4),
+                  0 0 0 1px rgba(255,255,255,0.1);
+      border: 1px solid var(--glass-border);
+      animation: slideInRight 1s ease-out;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-sizing: border-box;
+    }
+
+    .love-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 40px 90px rgba(0,0,0,0.5), 
+                  inset 0 1px 0 rgba(255,255,255,0.5),
+                  0 0 0 1px rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.2);
+    }
+
+    .love-card p {
+      font-size: clamp(1rem, 2.8vw, 1.25rem);
+      line-height: 1.9;
+      margin-bottom: clamp(15px, 3vw, 20px);
+      font-weight: 400;
+      letter-spacing: 0.3px;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      -webkit-hyphens: auto;
+      hyphens: auto;
+      padding: 0 clamp(5px, 2vw, 10px);
+    }
+
+    .love-card b {
+      color: var(--accent-gold);
+      text-shadow: 0 0 15px rgba(255, 235, 59, 0.6);
+      font-weight: 700;
+      font-size: 1.15em;
+      letter-spacing: 0.5px;
+    }
+
+    /* Romantic quote - elegant styling */
+    .romantic-quote {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-style: italic;
+      color: var(--soft-white);
+      margin: clamp(25px, 4vw, 35px) auto;
+      padding: clamp(20px, 4vw, 30px) clamp(20px, 4vw, 35px);
+      border-left: clamp(3px, 1vw, 5px) solid var(--accent-gold);
+      background: var(--glass-bg);
+      -webkit-backdrop-filter: blur(15px);
+      backdrop-filter: blur(15px);
+      border-radius: clamp(15px, 3vw, 20px);
+      max-width: min(750px, 95%);
+      width: 100%;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+      animation: fadeInUp 1s ease-out;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      line-height: 1.7;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      -webkit-hyphens: auto;
+      hyphens: auto;
+      box-sizing: border-box;
+    }
+
+    /* Button - sophisticated design */
+    .btn {
+      background: linear-gradient(135deg, #fff 0%, #ffe0e6 50%, #fff 100%);
+      background-size: 200% 200%;
+      animation: shimmer 3s ease infinite;
+      color: var(--primary-pink);
+      padding: clamp(16px, 3vw, 20px) clamp(32px, 5vw, 42px);
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.3), 
+                  0 0 25px rgba(255, 235, 59, 0.4),
+                  inset 0 1px 0 rgba(255,255,255,0.8);
+      display: inline-block;
+      cursor: pointer;
+      border: 2px solid rgba(255,255,255,0.3);
+      font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+      min-height: clamp(48px, 8vw, 55px);
+      min-width: clamp(200px, 40vw, 240px);
+      max-width: 90%;
+      position: relative;
+      overflow: hidden;
+      -webkit-user-select: none;
+      user-select: none;
+      margin-top: clamp(25px, 5vw, 40px);
+      letter-spacing: 0.5px;
+      word-wrap: break-word;
+      box-sizing: border-box;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.6);
+      transform: translate(-50%, -50%);
+      transition: width 0.7s, height 0.7s;
+    }
+
+    .btn:active::before {
+      width: 400px;
+      height: 400px;
+    }
+
+    .btn:hover {
+      transform: translateY(-6px) scale(1.05);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.4), 
+                  0 0 40px rgba(255, 235, 59, 0.6),
+                  inset 0 1px 0 rgba(255,255,255,0.9);
+      background: linear-gradient(135deg, var(--accent-gold) 0%, #fff 50%, var(--accent-gold) 100%);
+      background-size: 200% 200%;
+      color: var(--primary-pink);
+    }
+
+    .btn:active {
+      transform: translateY(-3px) scale(1.02);
+    }
+
+    /* Gallery - sophisticated grid */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: clamp(20px, 4vw, 25px);
+      margin: clamp(25px, 5vw, 40px) auto;
+      padding: 0 clamp(10px, 3vw, 15px);
+      max-width: min(950px, 95%);
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .gallery img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 25px;
+      box-shadow: 0 20px 45px rgba(0,0,0,0.45);
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      border: 3px solid var(--glass-border);
+      opacity: 0;
+      animation: scaleIn 0.8s ease forwards;
+    }
+    .gallery img:nth-child(1) { animation-delay: 0.2s; }
+    .gallery img:nth-child(2) { animation-delay: 0.4s; }
+    .gallery img:nth-child(3) { animation-delay: 0.6s; }
+
+    .gallery img:hover { 
+      transform: scale(1.1) rotate(2deg);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.6),
+                  0 0 30px rgba(255, 235, 59, 0.5);
+      border-color: var(--accent-gold);
+    }
+
+    /* Memory list - elegant items */
+    .memory-list {
+      text-align: left;
+      max-width: min(750px, 95%);
+      width: 100%;
+      margin: clamp(25px, 5vw, 40px) auto;
+      padding: 0 clamp(10px, 3vw, 20px);
+      box-sizing: border-box;
+    }
+
+    .memory-item {
+      background: var(--glass-bg);
+      -webkit-backdrop-filter: blur(15px);
+      backdrop-filter: blur(15px);
+      padding: clamp(20px, 4vw, 25px) clamp(20px, 4vw, 30px);
+      margin: clamp(15px, 3vw, 18px) 0;
+      border-radius: clamp(15px, 3vw, 20px);
+      border-left: clamp(3px, 1vw, 5px) solid var(--accent-gold);
+      animation: slideInRight 0.7s ease-out;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    .memory-item:hover {
+      transform: translateX(10px);
+      background: rgba(255,255,255,0.2);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+    }
+
+    .memory-item:nth-child(1) { animation-delay: 0.1s; }
+    .memory-item:nth-child(2) { animation-delay: 0.2s; }
+    .memory-item:nth-child(3) { animation-delay: 0.3s; }
+    .memory-item:nth-child(4) { animation-delay: 0.4s; }
+    .memory-item:nth-child(5) { animation-delay: 0.5s; }
+
+    .memory-item p {
+      font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+      line-height: 1.8;
+      margin: 0;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    /* Popup - sophisticated modal */
+    .popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 2000;
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      padding: 20px;
+    }
+    .popup.active {
+      visibility: visible;
+      opacity: 1;
+    }
+    .popup-box {
+      background: linear-gradient(135deg, #fff 0%, #ffe0e6 50%, #fff 100%);
+      color: var(--primary-pink);
+      padding: clamp(40px, 8vw, 65px);
+      border-radius: 40px;
+      text-align: center;
+      max-width: 520px;
+      width: 100%;
+      margin: 20px;
+      box-shadow: 0 35px 80px rgba(0,0,0,0.7), 
+                  0 0 50px rgba(255, 107, 157, 0.5);
+      animation: scaleIn 0.6s ease-out;
+      transform: scale(0.9);
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 3px solid rgba(255, 107, 157, 0.4);
+    }
+    .popup.active .popup-box {
+      transform: scale(1);
+    }
+    .popup-box h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.5rem, 7vw, 3.5rem);
+      margin-bottom: 25px;
+      background: linear-gradient(135deg, var(--primary-pink), var(--deep-pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .popup-box p {
+      font-size: clamp(1.1rem, 3vw, 1.3rem);
+      line-height: 2;
+      margin-bottom: 30px;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+    }
+
+    /* Confetti effect - enhanced */
+    .confetti {
+      position: fixed;
+      width: 12px;
+      height: 12px;
+      background: var(--accent-gold);
+      pointer-events: none;
+      z-index: 100;
+      animation: confettiFall 3.5s ease-out forwards;
+      border-radius: 50%;
+    }
+
+    @keyframes confettiFall {
+      0% {
+        transform: translateY(-100vh) rotate(0deg) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(720deg) scale(0);
+        opacity: 0;
+      }
+    }
+
+    /* Decorative elements */
+    .page-header::before,
+    .page-header::after {
+      content: '💖';
+      position: absolute;
+      font-size: 5rem;
+      opacity: 0.12;
+      animation: pulse 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .page-header::before {
+      top: 12%;
+      left: 12%;
+    }
+
+    .page-header::after {
+      content: '💕';
+      bottom: 15%;
+      right: 12%;
+      font-size: 4.5rem;
+      animation-delay: 1s;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .page {
+        padding: clamp(10px, 3vw, 20px) clamp(10px, 3vw, 20px);
+        padding-top: clamp(50px, 10vw, 70px);
+        padding-bottom: clamp(25px, 5vw, 40px);
+        justify-content: flex-start;
+      }
+
+      .page-header::before,
+      .page-header::after {
+        display: none;
+      }
+
+      h1 {
+        font-size: clamp(2.5rem, 10vw, 4rem);
+        margin-bottom: clamp(20px, 4vw, 30px);
+        padding: 0 clamp(15px, 4vw, 25px);
+      }
+
+      h2 {
+        font-size: clamp(1.6rem, 7vw, 2.5rem);
+        margin-bottom: clamp(20px, 4vw, 30px);
+        margin-top: clamp(5px, 2vw, 15px);
+        padding: 0 clamp(15px, 4vw, 20px);
+        line-height: 1.4;
+      }
+
+      .intro-text {
+        font-size: clamp(1rem, 3.5vw, 1.3rem);
+        padding: 0 clamp(15px, 4vw, 25px);
+        margin-bottom: clamp(30px, 6vw, 40px);
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+        gap: clamp(15px, 3vw, 20px);
+        padding: 0 clamp(5px, 2vw, 10px);
+      }
+
+      .gallery img {
+        height: clamp(220px, 50vw, 280px);
+      }
+
+      .love-card {
+        padding: clamp(20px, 4vw, 30px) clamp(20px, 4vw, 25px);
+        margin: clamp(15px, 3vw, 25px) auto;
+        border-radius: clamp(20px, 4vw, 25px);
+      }
+
+      .love-card p {
+        font-size: clamp(0.95rem, 3vw, 1.1rem);
+        line-height: 1.8;
+        padding: 0 clamp(5px, 2vw, 10px);
+      }
+
+      #pageCounter {
+        top: clamp(10px, 2vw, 15px);
+        right: clamp(10px, 2vw, 15px);
+        font-size: clamp(0.7rem, 2vw, 0.75rem);
+        padding: clamp(6px, 1.5vw, 8px) clamp(12px, 2.5vw, 16px);
+      }
+
+      .memory-item {
+        padding: clamp(18px, 3.5vw, 20px) clamp(18px, 3.5vw, 25px);
+        margin: clamp(12px, 2.5vw, 15px) 0;
+      }
+
+      .memory-item p {
+        font-size: clamp(0.9rem, 3vw, 1rem);
+        line-height: 1.7;
+      }
+
+      .romantic-quote {
+        font-size: clamp(1.1rem, 4vw, 1.4rem);
+        padding: clamp(18px, 3.5vw, 25px) clamp(18px, 3.5vw, 20px);
+        margin: clamp(20px, 4vw, 30px) auto;
+      }
+
+      .btn {
+        padding: clamp(14px, 3vw, 18px) clamp(28px, 5vw, 36px);
+        min-width: clamp(180px, 50vw, 220px);
+        font-size: clamp(0.9rem, 2.8vw, 1.05rem);
+        margin-top: clamp(20px, 4vw, 35px);
+      }
+
+      footer {
+        margin-top: clamp(30px, 6vw, 50px);
+        padding: clamp(25px, 5vw, 35px) clamp(15px, 3vw, 20px);
+      }
+
+      footer p {
+        font-size: clamp(1.5rem, 6vw, 2.2rem);
+        padding: 0 clamp(10px, 3vw, 20px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page {
+        padding: clamp(8px, 2vw, 15px) clamp(8px, 2vw, 15px);
+        padding-top: clamp(45px, 12vw, 60px);
+        padding-bottom: clamp(20px, 5vw, 30px);
+      }
+
+      h1 {
+        font-size: clamp(2rem, 12vw, 3rem);
+        margin-bottom: clamp(15px, 4vw, 25px);
+      }
+
+      h2 {
+        font-size: clamp(1.4rem, 8vw, 2rem);
+        margin-bottom: clamp(15px, 4vw, 25px);
+        line-height: 1.5;
+      }
+
+      .intro-text {
+        font-size: clamp(0.95rem, 4vw, 1.15rem);
+        line-height: 1.8;
+      }
+
+      .love-card {
+        padding: clamp(18px, 4vw, 25px) clamp(15px, 3vw, 20px);
+        margin: clamp(12px, 3vw, 20px) auto;
+      }
+
+      .love-card p {
+        font-size: clamp(0.9rem, 3.5vw, 1rem);
+        line-height: 1.7;
+      }
+
+      .btn {
+        padding: clamp(12px, 3vw, 16px) clamp(24px, 5vw, 32px);
+        min-width: clamp(160px, 55vw, 200px);
+        font-size: clamp(0.85rem, 3vw, 1rem);
+      }
+
+      .romantic-quote {
+        padding: clamp(15px, 3vw, 20px) clamp(15px, 3vw, 18px);
+        font-size: clamp(1rem, 4.5vw, 1.25rem);
+      }
+
+      .memory-item {
+        padding: clamp(15px, 3vw, 18px) clamp(15px, 3vw, 20px);
+      }
+
+      .memory-item p {
+        font-size: clamp(0.85rem, 3.5vw, 0.95rem);
+      }
+
+      .gallery img {
+        height: clamp(200px, 55vw, 250px);
+      }
+    }
+
+    @media (max-width: 360px) {
+      h2 {
+        font-size: clamp(1.2rem, 9vw, 1.6rem);
+        padding: 0 clamp(10px, 3vw, 15px);
+      }
+
+      .love-card p {
+        font-size: clamp(0.85rem, 4vw, 0.95rem);
+      }
+
+      .btn {
+        min-width: clamp(140px, 60vw, 180px);
+        font-size: clamp(0.8rem, 3.5vw, 0.95rem);
+      }
+    }
+
+    /* Smooth scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Accessibility */
+    .btn:focus {
+      outline: 4px solid var(--accent-gold);
+      outline-offset: 4px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* Footer styling */
+    footer {
+      margin-top: 60px;
+      padding: 40px 25px;
+    }
+
+    footer p {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2rem, 6vw, 3rem);
+      text-shadow: 2px 2px 15px rgba(0,0,0,0.3);
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+  <div id="progress"></div>
+  <div id="pageCounter" class="hidden"></div>
+
+  <!-- Page 1: Cover -->
+  <div class="page page-header active" id="page1">
+    <h1>Prativa ❤️</h1>
+    <p class="intro-text">This is not a website.<br>This is how my heart speaks to you.</p>
+    <a class="btn" onclick="nextPage()" role="button">Begin Our Story 💖</a>
+  </div>
+
+  <!-- Page 2: Why You Matter -->
+  <div class="page" id="page2">
+    <h2>Why You Matter To Me</h2>
+    <div class="love-card">
+      <p>
+        Prativa, my betu — your <b>care</b> makes me feel protected,
+        your <b>love</b> gives my life meaning,
+        your <b>loyalty</b> gives me trust,
+        and your <b>respect</b> gives me dignity.
+        <br><br>
+        I don't want perfect love.
+        <br>
+        I want real love — and that is you.
+      </p>
+    </div>
+    <a class="btn" onclick="nextPage()" role="button">Continue 💕</a>
+  </div>
+
+  <!-- Page 3: What You Mean -->
+  <div class="page" id="page3">
+    <h2>What You Mean To Me</h2>
+    <div class="love-card">
+      <p>
+        You are not just my girlfriend.
+        <br><br>
+        You are my <b>best friend</b> — the one I can tell everything to.
+        <br>
+        You are my <b>peace</b> — the calm in my storm.
+        <br>
+        You are my <b>strength</b> — the reason I believe in myself.
+        <br>
+        You are my <b>home</b> — wherever you are, I belong.
+        <br><br>
+        You are my everything, Prativa.
+      </p>
+    </div>
+    <a class="btn" onclick="nextPage()" role="button">Tell Me More 💖</a>
+  </div>
+
+  <!-- Page 4: Memories -->
+  <div class="page" id="page4">
+    <h2>Moments I Keep In My Heart</h2>
+    <p style="font-size: clamp(1.1rem, 3vw, 1.3rem); margin-bottom: 40px; opacity: 0.95; font-weight: 300; letter-spacing: 0.5px;">Not for the world. Just for us.</p>
+    <div class="memory-list">
+      <div class="memory-item">
+        <p>💕 Every time you smile, my world lights up</p>
+      </div>
+      <div class="memory-item">
+        <p>💖 The way you care for me, even in small things</p>
+      </div>
+      <div class="memory-item">
+        <p>💗 Your laughter — it's my favorite sound</p>
+      </div>
+      <div class="memory-item">
+        <p>💝 How you make ordinary moments feel magical</p>
+      </div>
+      <div class="memory-item">
+        <p>💞 The way you understand me without words</p>
+      </div>
+    </div>
+    <a class="btn" onclick="nextPage()" role="button">More Memories 💞</a>
+  </div>
+
+  <!-- Page 5: Gallery -->
+  <div class="page" id="page5">
+    <h2>Our Beautiful Moments</h2>
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&h=400&fit=crop" alt="Beautiful moment" loading="lazy" />
+      <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=400&h=400&fit=crop" alt="Special memory" loading="lazy" />
+      <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&h=400&fit=crop" alt="Cherished time" loading="lazy" />
+    </div>
+    <p class="romantic-quote">"In your smile, I see something more beautiful than the stars."</p>
+    <a class="btn" onclick="nextPage()" role="button">Continue Our Story 💖</a>
+  </div>
+
+  <!-- Page 6: Promises -->
+  <div class="page" id="page6">
+    <h2>My Promises To You</h2>
+    <div class="love-card">
+      <p>
+        I promise to <b>love you</b> every single day, even when it's hard.
+        <br><br>
+        I promise to <b>respect you</b> — your dreams, your choices, your heart.
+        <br><br>
+        I promise to <b>protect you</b> — your feelings, your peace, your happiness.
+        <br><br>
+        I promise to <b>grow with you</b> — to become better, together.
+        <br><br>
+        I promise to <b>choose you</b> — today, tomorrow, and forever.
+      </p>
+    </div>
+    <a class="btn" onclick="nextPage()" role="button">More Promises 💕</a>
+  </div>
+
+  <!-- Page 7: Forever -->
+  <div class="page" id="page7">
+    <h2>Forever Starts Today</h2>
+    <div class="love-card">
+      <p>
+        I don't know what the future holds.
+        <br><br>
+        But I know I want to face it with you.
+        <br><br>
+        Through every season, every challenge, every joy —
+        <br>
+        I want you by my side.
+        <br><br>
+        <b>Forever</b> isn't a destination.
+        <br>
+        It's choosing each other, every single day.
+      </p>
+    </div>
+    <p class="romantic-quote">"You are my today and all of my tomorrows."</p>
+    <a class="btn" onclick="nextPage()" role="button">Continue 💖</a>
+  </div>
+
+  <!-- Page 8: The Question -->
+  <div class="page" id="page8">
+    <h2>A Question From My Heart</h2>
+    <div class="love-card">
+      <p>
+        Prativa, my betu…
+        <br><br>
+        Will you keep choosing us?
+        <br><br>
+        With <b>care</b>, <b>love</b>, <b>loyalty</b>, and <b>respect</b>?
+        <br><br>
+        Not just today, but every tomorrow?
+        <br><br>
+        Will you be my Valentine — today and always?
+      </p>
+    </div>
+    <a class="btn" onclick="openPopup()" role="button">Yes, I Choose You ❤️</a>
+  </div>
+
+  <!-- Page 9: Final Message -->
+  <div class="page" id="page9">
+    <h2>You Are My Safe Place 💞</h2>
+    <div class="love-card">
+      <p>
+        Thank you for choosing me.
+        <br>
+        Thank you for trusting my heart.
+        <br><br>
+        I will protect your feelings.
+        <br>
+        I will respect your dreams.
+        <br>
+        I will stay loyal to us.
+        <br><br>
+        This is not the end.
+        <br>
+        <b>This is the beginning of our forever.</b>
+      </p>
+    </div>
+    <p class="romantic-quote">
+      "You are my today and all of my tomorrows."
+    </p>
+    <footer>
+      <p>Prativa, Will You Be My Valentine — Today & Always? ❤️</p>
+    </footer>
+  </div>
+
+  <!-- Popup -->
+  <div class="popup" id="popup" role="dialog" aria-labelledby="popup-title" aria-modal="true">
+    <div class="popup-box">
+      <h2 id="popup-title">Prativa ❤️</h2>
+      <p>Betu, will you walk with me — with care, love, loyalty, and respect — not just today, but every tomorrow?</p>
+      <br />
+      <a class="btn" onclick="yesAnswer()" role="button">Yes, I Choose You Forever 💖</a>
+    </div>
+  </div>
+
+  <script>
+    let currentPage = 1;
+    const totalPages = 9;
+
+    // Update page counter
+    function updateCounter() {
+      const counter = document.getElementById('pageCounter');
+      if (counter) {
+        counter.textContent = `${currentPage} / ${totalPages}`;
+        counter.classList.remove('hidden');
+      }
+    }
+
+    // Update progress bar
+    function setProgress(val) {
+      const progressBar = document.getElementById('progress');
+      if (progressBar) {
+        progressBar.style.width = val + '%';
+      }
+    }
+
+    // Create sparkle effect - enhanced
+    function createSparkle(x, y) {
+      for (let i = 0; i < 12; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = x + (Math.random() - 0.5) * 150 + 'px';
+        sparkle.style.top = y + (Math.random() - 0.5) * 150 + 'px';
+        sparkle.style.animationDelay = Math.random() * 0.4 + 's';
+        sparkle.style.width = (Math.random() * 4 + 6) + 'px';
+        sparkle.style.height = sparkle.style.width;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 2500);
+      }
+    }
+
+    // Create confetti effect - enhanced
+    function createConfetti() {
+      const colors = ['#ffeb3b', '#ff6b9d', '#ff1744', '#fff', '#ff9a9e', '#ffb3ba'];
+      for (let i = 0; i < 100; i++) {
+        setTimeout(() => {
+          const confetti = document.createElement('div');
+          confetti.className = 'confetti';
+          confetti.style.left = Math.random() * 100 + '%';
+          confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+          confetti.style.width = Math.random() * 12 + 8 + 'px';
+          confetti.style.height = confetti.style.width;
+          document.body.appendChild(confetti);
+          setTimeout(() => confetti.remove(), 3500);
+        }, i * 20);
+      }
+    }
+
+    // Navigate to next page - smooth transition
+    function nextPage() {
+      createSparkle(event?.clientX || window.innerWidth / 2, event?.clientY || window.innerHeight / 2);
+      
+      if (currentPage < totalPages) {
+        const currentPageEl = document.getElementById(`page${currentPage}`);
+        const nextPageEl = document.getElementById(`page${currentPage + 1}`);
+        
+        if (currentPageEl && nextPageEl) {
+          // Smooth exit
+          currentPageEl.classList.remove('active');
+          currentPageEl.classList.add('prev');
+          
+          setTimeout(() => {
+            currentPageEl.style.visibility = 'hidden';
+            // Smooth entrance
+            nextPageEl.classList.add('active');
+            nextPageEl.style.visibility = 'visible';
+            nextPageEl.scrollTop = 0;
+            
+            currentPage++;
+            updateCounter();
+            setProgress((currentPage / totalPages) * 100);
+          }, 400);
+        }
+      }
+    }
+
+    // Open popup
+    function openPopup() {
+      createSparkle(event?.clientX || window.innerWidth / 2, event?.clientY || window.innerHeight / 2);
+      const popup = document.getElementById('popup');
+      if (popup) {
+        popup.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
+      }
+    }
+
+    // Handle yes answer
+    function yesAnswer() {
+      createConfetti();
+      const popup = document.getElementById('popup');
+      const finalPage = document.getElementById('page9');
+      
+      if (popup) {
+        popup.classList.remove('active');
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.width = '';
+      }
+      
+      // Show final page
+      if (finalPage && currentPage !== 9) {
+        document.querySelectorAll('.page').forEach(page => {
+          page.classList.remove('active', 'prev');
+          page.style.visibility = 'hidden';
+        });
+        
+        finalPage.classList.add('active');
+        finalPage.style.visibility = 'visible';
+        finalPage.scrollTop = 0;
+        currentPage = 9;
+        updateCounter();
+        setProgress(100);
+        
+        // Create hearts celebration
+        for (let i = 0; i < 40; i++) {
+          setTimeout(() => createHeart(), i * 60);
+        }
+      }
+    }
+
+    // Close popup when clicking outside
+    document.getElementById('popup')?.addEventListener('click', function(e) {
+      if (e.target === this) {
+        this.classList.remove('active');
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.width = '';
+      }
+    });
+
+    // Close popup with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        const popup = document.getElementById('popup');
+        if (popup && popup.classList.contains('active')) {
+          popup.classList.remove('active');
+          document.body.style.overflow = '';
+          document.body.style.position = '';
+          document.body.style.width = '';
+        }
+      }
+    });
+
+    // Add sparkle effect to button clicks
+    document.querySelectorAll('.btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        createSparkle(e.clientX, e.clientY);
+      });
+    });
+
+    // Create floating hearts - enhanced
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 4 + 8) + 's';
+      heart.style.opacity = Math.random() * 0.4 + 0.5;
+      heart.style.width = (Math.random() * 12 + 16) + 'px';
+      heart.style.height = heart.style.width;
+      
+      const colors = ['#ff1744', '#ff6b9d', '#ff9a9e', '#ffeb3b', '#ffb3ba'];
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      heart.style.background = color;
+      
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 12000);
+    }
+
+    // Create hearts periodically
+    const heartInterval = window.innerWidth < 768 ? 1200 : 700;
+    setInterval(createHeart, heartInterval);
+
+    // Initialize
+    updateCounter();
+    setProgress((currentPage / totalPages) * 100);
+
+    // Preload images
+    const images = document.querySelectorAll('.gallery img');
+    images.forEach((img, index) => {
+      if (img.complete) {
+        img.style.opacity = '1';
+      } else {
+        img.style.opacity = '0';
+        img.style.transition = 'opacity 0.6s ease';
+        img.addEventListener('load', function() {
+          this.style.opacity = '1';
+        });
+        img.addEventListener('error', function() {
+          this.style.opacity = '1';
+          this.style.background = 'linear-gradient(135deg, rgba(255,107,157,0.4), rgba(255,235,59,0.4))';
+        });
+      }
+    });
+
+    // Touch gesture support for mobile
+    let touchStartY = 0;
+    let touchEndY = 0;
+
+    document.addEventListener('touchstart', function(e) {
+      touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+
+    document.addEventListener('touchend', function(e) {
+      touchEndY = e.changedTouches[0].screenY;
+      handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+      const swipeThreshold = 100;
+      const diff = touchStartY - touchEndY;
+      
+      if (diff < -swipeThreshold && currentPage < totalPages) {
+        nextPage();
+      }
+    }
+
+    // Add vibration feedback on mobile
+    function vibrate(pattern) {
+      if ('vibrate' in navigator) {
+        navigator.vibrate(pattern);
+      }
+    }
+
+    document.querySelectorAll('.btn').forEach(btn => {
+      btn.addEventListener('touchstart', function() {
+        vibrate(15);
+      }, { passive: true });
+    });
+  </script>
+</body>
+</html>
