@@ -354,6 +354,13 @@
       box-sizing: border-box;
     }
 
+    /* Prevent anchor buttons from causing refresh/navigation on mobile */
+    a.btn, a.btn-no {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
     /* Button - sophisticated design */
     .btn {
       background: linear-gradient(135deg, #fff 0%, #ffe0e6 50%, #fff 100%);
@@ -903,7 +910,7 @@
   <div class="page page-header active" id="page1">
     <h1>Prativa ❤️💕</h1>
     <p class="intro-text">This is not a website. 💖<br>This is how my heart speaks to you. ✨</p>
-    <a class="btn" onclick="nextPage()" role="button">Begin Our Story 💖</a>
+    <a class="btn" href="javascript:void(0)" onclick="nextPage(event)" role="button">Begin Our Story 💖</a>
   </div>
 
   <!-- Page 2: Why You Matter -->
@@ -921,7 +928,7 @@
         I want real love — and that is you. 💖
       </p>
     </div>
-    <a class="btn" onclick="nextPage()" role="button">Continue 💕</a>
+    <a class="btn" href="javascript:void(0)" onclick="nextPage(event)" role="button">Continue 💕</a>
   </div>
 
   <!-- Page 3: What You Mean -->
@@ -942,7 +949,7 @@
         You are my everything, Prativa. 💞✨
       </p>
     </div>
-    <a class="btn" onclick="nextPage()" role="button">Tell Me More 💖</a>
+    <a class="btn" href="javascript:void(0)" onclick="nextPage(event)" role="button">Tell Me More 💖</a>
   </div>
 
   <!-- Page 4: Memories -->
@@ -966,7 +973,7 @@
         <p>💞 The way you understand me without words</p>
       </div>
     </div>
-    <a class="btn" onclick="nextPage()" role="button">More Memories 💞</a>
+    <a class="btn" href="javascript:void(0)" onclick="nextPage(event)" role="button">More Memories 💞</a>
   </div>
 
   <!-- Page 5: Gallery -->
@@ -978,7 +985,7 @@
       <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&h=400&fit=crop" alt="Cherished time" loading="lazy" />
     </div>
     <p class="romantic-quote">"In your smile, I see something more beautiful than the stars. ✨💕"</p>
-    <a class="btn" onclick="nextPage()" role="button">Continue Our Story 💖</a>
+    <a class="btn" href="javascript:void(0)" onclick="nextPage(event)" role="button">Continue Our Story 💖</a>
   </div>
 
   <!-- Page 6: Promises -->
@@ -997,7 +1004,7 @@
         I promise to <b>choose you</b> — today, tomorrow, and forever.
       </p>
     </div>
-    <a class="btn" onclick="nextPage()" role="button">More Promises 💕</a>
+    <a class="btn" href="javascript:void(0)" onclick="nextPage(event)" role="button">More Promises 💕</a>
   </div>
 
   <!-- Page 7: Forever -->
@@ -1019,7 +1026,7 @@
       </p>
     </div>
     <p class="romantic-quote">"You are my today and all of my tomorrows. 💖✨"</p>
-    <a class="btn" onclick="nextPage()" role="button">Continue 💖</a>
+    <a class="btn" href="javascript:void(0)" onclick="nextPage(event)" role="button">Continue 💖</a>
   </div>
 
   <!-- Page 8: The Question -->
@@ -1039,8 +1046,8 @@
       </p>
     </div>
     <div class="btn-group">
-      <a class="btn" onclick="openPopup()" role="button">Yes, I Choose You ❤️💕</a>
-      <a class="btn btn-no" onclick="openNoPopup()" role="button">No 😢</a>
+      <a class="btn" href="javascript:void(0)" onclick="openPopup(event)" role="button">Yes, I Choose You ❤️💕</a>
+      <a class="btn btn-no" href="javascript:void(0)" onclick="openNoPopup(event)" role="button">No 😢</a>
     </div>
   </div>
 
@@ -1078,7 +1085,7 @@
       <h2 id="popup-title">Prativa ❤️💕</h2>
       <p>Betu, will you walk with me — with care, love, loyalty, and respect — not just today, but every tomorrow? 💖</p>
       <br />
-      <a class="btn" onclick="yesAnswer()" role="button">Yes, I Choose You Forever 💖</a>
+      <a class="btn" href="javascript:void(0)" onclick="yesAnswer(event)" role="button">Yes, I Choose You Forever 💖</a>
     </div>
   </div>
 
@@ -1087,7 +1094,7 @@
     <div class="popup-box">
       <h2 id="popup-no-title">Nice try! 😄💕</h2>
       <p id="noPopupMessage">You have no option! The only answer is Yes! 💖</p>
-      <a class="btn btn-no" onclick="closeNoPopup()" role="button">OK, fine! 💖</a>
+      <a class="btn btn-no" href="javascript:void(0)" onclick="closeNoPopup(event)" role="button">OK, fine! 💖</a>
     </div>
   </div>
 
@@ -1145,8 +1152,9 @@
     }
 
     // Navigate to next page - smooth transition
-    function nextPage() {
-      createSparkle(event?.clientX || window.innerWidth / 2, event?.clientY || window.innerHeight / 2);
+    function nextPage(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      createSparkle(e?.clientX || window.innerWidth / 2, e?.clientY || window.innerHeight / 2);
       
       if (currentPage < totalPages) {
         const currentPageEl = document.getElementById(`page${currentPage}`);
@@ -1173,8 +1181,9 @@
     }
 
     // Open popup (Yes)
-    function openPopup() {
-      createSparkle(event?.clientX || window.innerWidth / 2, event?.clientY || window.innerHeight / 2);
+    function openPopup(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      createSparkle(e?.clientX || window.innerWidth / 2, e?.clientY || window.innerHeight / 2);
       const popup = document.getElementById('popup');
       if (popup) {
         popup.classList.add('active');
@@ -1199,7 +1208,8 @@
     ];
     let noClickCount = 0;
 
-    function openNoPopup() {
+    function openNoPopup(e) {
+      if (e && e.preventDefault) e.preventDefault();
       const popupNo = document.getElementById('popupNo');
       const msgEl = document.getElementById('noPopupMessage');
       const titleEl = document.getElementById('popup-no-title');
@@ -1214,7 +1224,8 @@
       document.body.style.width = '100%';
     }
 
-    function closeNoPopup() {
+    function closeNoPopup(e) {
+      if (e && e.preventDefault) e.preventDefault();
       const popupNo = document.getElementById('popupNo');
       if (popupNo) {
         popupNo.classList.remove('active');
@@ -1225,7 +1236,8 @@
     }
 
     // Handle yes answer
-    function yesAnswer() {
+    function yesAnswer(e) {
+      if (e && e.preventDefault) e.preventDefault();
       createConfetti();
       const popup = document.getElementById('popup');
       const finalPage = document.getElementById('page9');
