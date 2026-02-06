@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#ff758c" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -26,6 +26,12 @@
       --glass-border: rgba(255, 255, 255, 0.25);
     }
     
+    html {
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+      min-height: 100%;
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 35%, #ff9a9e 70%, #ffb3ba 100%);
@@ -33,8 +39,10 @@
       background-size: 400% 400%;
       animation: gradientShift 15s ease infinite;
       color: #fff;
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: auto;
       min-height: 100vh;
+      min-height: 100dvh;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
@@ -55,6 +63,11 @@
       z-index: 1000;
       transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
       box-shadow: 0 2px 20px rgba(255, 235, 59, 0.6);
+    }
+    @media (max-width: 768px) {
+      #progress {
+        top: env(safe-area-inset-top);
+      }
     }
 
     /* Page counter - more elegant */
@@ -198,9 +211,13 @@
       position: fixed;
       top: 0;
       left: 0;
+      right: 0;
+      bottom: 0;
       width: 100%;
-      height: 100vh;
-      height: 100dvh;
+      height: 100%;
+      min-height: -webkit-fill-available;
+      min-height: 100dvh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -215,6 +232,7 @@
       transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
       overflow-y: auto;
       overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
       will-change: transform, opacity;
       box-sizing: border-box;
     }
@@ -272,7 +290,7 @@
     .intro-text {
       font-size: clamp(1.2rem, 4vw, 1.6rem);
       opacity: 0.98;
-      max-width: 750px;
+      max-width: min(750px, calc(100% - 24px));
       line-height: 2;
       margin-bottom: 50px;
       font-weight: 300;
@@ -287,8 +305,8 @@
       border-radius: clamp(25px, 5vw, 35px);
       padding: clamp(25px, 5vw, 50px);
       margin: clamp(20px, 4vw, 35px) auto;
-      max-width: min(850px, 95%);
-      width: 100%;
+      max-width: min(850px, calc(100% - 24px));
+      width: calc(100% - 24px);
       box-shadow: 0 30px 70px rgba(0,0,0,0.4), 
                   inset 0 1px 0 rgba(255,255,255,0.4),
                   0 0 0 1px rgba(255,255,255,0.1);
@@ -340,8 +358,9 @@
       -webkit-backdrop-filter: blur(15px);
       backdrop-filter: blur(15px);
       border-radius: clamp(15px, 3vw, 20px);
-      max-width: min(750px, 95%);
-      width: 100%;
+      max-width: min(750px, calc(100% - 24px));
+      width: calc(100% - 24px);
+      box-sizing: border-box;
       box-shadow: 0 20px 50px rgba(0,0,0,0.3);
       animation: fadeInUp 1s ease-out;
       font-weight: 500;
@@ -351,7 +370,6 @@
       overflow-wrap: break-word;
       -webkit-hyphens: auto;
       hyphens: auto;
-      box-sizing: border-box;
     }
 
     /* Prevent anchor buttons from causing refresh/navigation on mobile */
@@ -379,9 +397,10 @@
       cursor: pointer;
       border: 2px solid rgba(255,255,255,0.3);
       font-size: clamp(0.95rem, 2.5vw, 1.15rem);
-      min-height: clamp(48px, 8vw, 55px);
-      min-width: clamp(200px, 40vw, 240px);
-      max-width: 90%;
+      min-height: 48px;
+      min-width: 200px;
+      max-width: calc(100vw - 32px);
+      width: max-content;
       position: relative;
       overflow: hidden;
       -webkit-user-select: none;
@@ -431,12 +450,13 @@
       gap: clamp(20px, 4vw, 25px);
       margin: clamp(25px, 5vw, 40px) auto;
       padding: 0 clamp(10px, 3vw, 15px);
-      max-width: min(950px, 95%);
+      max-width: min(950px, calc(100% - 24px));
       width: 100%;
       box-sizing: border-box;
     }
     .gallery img {
       width: 100%;
+      max-width: 100%;
       height: 300px;
       object-fit: cover;
       border-radius: 25px;
@@ -461,7 +481,7 @@
     /* Memory list - elegant items */
     .memory-list {
       text-align: left;
-      max-width: min(750px, 95%);
+      max-width: min(750px, calc(100% - 24px));
       width: 100%;
       margin: clamp(25px, 5vw, 40px) auto;
       padding: 0 clamp(10px, 3vw, 20px);
@@ -507,7 +527,10 @@
     /* Popup - sophisticated modal */
     .popup {
       position: fixed;
-      inset: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       background: rgba(0,0,0,0.9);
       display: flex;
       justify-content: center;
@@ -519,6 +542,12 @@
       -webkit-backdrop-filter: blur(12px);
       backdrop-filter: blur(12px);
       padding: 20px;
+      padding-left: max(20px, env(safe-area-inset-left));
+      padding-right: max(20px, env(safe-area-inset-right));
+      padding-top: max(20px, env(safe-area-inset-top));
+      padding-bottom: max(20px, env(safe-area-inset-bottom));
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
     .popup.active {
       visibility: visible;
@@ -640,13 +669,20 @@
       animation-delay: 1s;
     }
 
-    /* Responsive Design */
+    /* ========== MOBILE-FIRST RESPONSIVE ========== */
+    /* Tablet and below */
     @media (max-width: 768px) {
+      body {
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+      }
+
       .page {
-        padding: clamp(10px, 3vw, 20px) clamp(10px, 3vw, 20px);
-        padding-top: clamp(50px, 10vw, 70px);
-        padding-bottom: clamp(25px, 5vw, 40px);
-        justify-content: flex-start;
+        padding: 16px;
+        padding-top: max(56px, calc(16px + env(safe-area-inset-top)));
+        padding-bottom: max(28px, calc(16px + env(safe-area-inset-bottom)));
+        padding-left: max(16px, env(safe-area-inset-left));
+        padding-right: max(16px, env(safe-area-inset-right));
       }
 
       .page-header::before,
@@ -655,213 +691,251 @@
       }
 
       h1 {
-        font-size: clamp(2.5rem, 10vw, 4rem);
-        margin-bottom: clamp(20px, 4vw, 30px);
-        padding: 0 clamp(15px, 4vw, 25px);
+        font-size: 2.75rem;
+        margin-bottom: 24px;
+        padding: 0 12px;
       }
 
       h2 {
-        font-size: clamp(1.6rem, 7vw, 2.5rem);
-        margin-bottom: clamp(20px, 4vw, 30px);
-        margin-top: clamp(5px, 2vw, 15px);
-        padding: 0 clamp(15px, 4vw, 20px);
-        line-height: 1.4;
+        font-size: 1.75rem;
+        margin-bottom: 24px;
+        margin-top: 8px;
+        padding: 0 12px;
+        line-height: 1.35;
       }
 
       .intro-text {
-        font-size: clamp(1rem, 3.5vw, 1.3rem);
-        padding: 0 clamp(15px, 4vw, 25px);
-        margin-bottom: clamp(30px, 6vw, 40px);
+        font-size: 1.1rem;
+        padding: 0 12px;
+        margin-bottom: 32px;
+        line-height: 1.75;
+      }
+
+      .love-card {
+        width: calc(100% - 24px);
+        max-width: none;
+        padding: 24px 20px;
+        margin: 20px 0;
+        border-radius: 24px;
+      }
+
+      .love-card p {
+        font-size: 1rem;
+        line-height: 1.8;
+        padding: 0 4px;
+      }
+
+      .romantic-quote {
+        font-size: 1.2rem;
+        padding: 22px 18px;
+        margin: 24px 0;
+        width: calc(100% - 24px);
+        max-width: none;
       }
 
       .gallery {
         grid-template-columns: 1fr;
-        gap: clamp(15px, 3vw, 20px);
-        padding: 0 clamp(5px, 2vw, 10px);
+        gap: 16px;
+        padding: 0 4px;
+        width: 100%;
       }
 
       .gallery img {
-        height: clamp(220px, 50vw, 280px);
+        height: 260px;
+        max-width: 100%;
       }
 
-      .love-card {
-        padding: clamp(20px, 4vw, 30px) clamp(20px, 4vw, 25px);
-        margin: clamp(15px, 3vw, 25px) auto;
-        border-radius: clamp(20px, 4vw, 25px);
-      }
-
-      .love-card p {
-        font-size: clamp(0.95rem, 3vw, 1.1rem);
-        line-height: 1.8;
-        padding: 0 clamp(5px, 2vw, 10px);
-      }
-
-      #pageCounter {
-        top: clamp(10px, 2vw, 15px);
-        right: clamp(10px, 2vw, 15px);
-        font-size: clamp(0.7rem, 2vw, 0.75rem);
-        padding: clamp(6px, 1.5vw, 8px) clamp(12px, 2.5vw, 16px);
+      .memory-list {
+        width: 100%;
+        padding: 0 4px;
       }
 
       .memory-item {
-        padding: clamp(18px, 3.5vw, 20px) clamp(18px, 3.5vw, 25px);
-        margin: clamp(12px, 2.5vw, 15px) 0;
+        padding: 18px 16px;
+        margin: 12px 0;
       }
 
       .memory-item p {
-        font-size: clamp(0.9rem, 3vw, 1rem);
+        font-size: 1rem;
         line-height: 1.7;
-      }
-
-      .romantic-quote {
-        font-size: clamp(1.1rem, 4vw, 1.4rem);
-        padding: clamp(18px, 3.5vw, 25px) clamp(18px, 3.5vw, 20px);
-        margin: clamp(20px, 4vw, 30px) auto;
-      }
-
-      .btn {
-        padding: clamp(14px, 3vw, 18px) clamp(28px, 5vw, 36px);
-        min-width: clamp(180px, 50vw, 220px);
-        font-size: clamp(0.9rem, 2.8vw, 1.05rem);
-        margin-top: clamp(20px, 4vw, 35px);
-      }
-
-      .btn-group {
-        flex-direction: column;
-        gap: 14px;
-        margin-top: clamp(20px, 4vw, 35px);
-      }
-      .btn-group .btn,
-      .btn-group .btn-no {
-        width: 100%;
-        max-width: min(280px, 92vw);
-      }
-
-      footer {
-        margin-top: clamp(30px, 6vw, 50px);
-        padding: clamp(25px, 5vw, 35px) clamp(15px, 3vw, 20px);
-      }
-
-      footer p {
-        font-size: clamp(1.5rem, 6vw, 2.2rem);
-        padding: 0 clamp(10px, 3vw, 20px);
-      }
-    }
-
-    @media (max-width: 480px) {
-      .page {
-        padding: clamp(8px, 2vw, 15px) clamp(8px, 2vw, 15px);
-        padding-top: clamp(45px, 12vw, 60px);
-        padding-bottom: clamp(20px, 5vw, 30px);
-      }
-
-      h1 {
-        font-size: clamp(2rem, 12vw, 3rem);
-        margin-bottom: clamp(15px, 4vw, 25px);
-      }
-
-      h2 {
-        font-size: clamp(1.4rem, 8vw, 2rem);
-        margin-bottom: clamp(15px, 4vw, 25px);
-        line-height: 1.5;
-      }
-
-      .intro-text {
-        font-size: clamp(0.95rem, 4vw, 1.15rem);
-        line-height: 1.8;
-      }
-
-      .love-card {
-        padding: clamp(18px, 4vw, 25px) clamp(15px, 3vw, 20px);
-        margin: clamp(12px, 3vw, 20px) auto;
-      }
-
-      .love-card p {
-        font-size: clamp(0.9rem, 3.5vw, 1rem);
-        line-height: 1.7;
-      }
-
-      .btn {
-        padding: clamp(12px, 3vw, 16px) clamp(24px, 5vw, 32px);
-        min-width: clamp(160px, 55vw, 200px);
-        font-size: clamp(0.85rem, 3vw, 1rem);
-      }
-
-      .romantic-quote {
-        padding: clamp(15px, 3vw, 20px) clamp(15px, 3vw, 18px);
-        font-size: clamp(1rem, 4.5vw, 1.25rem);
       }
 
       .page-subtitle {
-        font-size: clamp(0.95rem, 4vw, 1.1rem);
-        margin-bottom: clamp(20px, 4vw, 35px);
-      }
-
-      .memory-item {
-        padding: clamp(15px, 3vw, 18px) clamp(15px, 3vw, 20px);
-      }
-
-      .memory-item p {
-        font-size: clamp(0.85rem, 3.5vw, 0.95rem);
-      }
-
-      .gallery img {
-        height: clamp(200px, 55vw, 250px);
-      }
-    }
-
-    @media (max-width: 360px) {
-      h2 {
-        font-size: clamp(1.2rem, 9vw, 1.6rem);
-        padding: 0 clamp(10px, 3vw, 15px);
-      }
-
-      .love-card p {
-        font-size: clamp(0.85rem, 4vw, 0.95rem);
+        font-size: 1.05rem;
+        margin-bottom: 28px;
       }
 
       .btn {
-        min-width: clamp(140px, 60vw, 180px);
-        font-size: clamp(0.8rem, 3.5vw, 0.95rem);
+        min-height: 48px;
+        padding: 14px 28px;
+        font-size: 1rem;
+        min-width: 180px;
+        max-width: calc(100vw - 48px);
+        margin-top: 28px;
       }
 
       .btn-group {
         flex-direction: column;
-        gap: 14px;
+        gap: 12px;
+        margin-top: 28px;
+        width: 100%;
+        max-width: 100%;
       }
 
       .btn-group .btn,
       .btn-group .btn-no {
         width: 100%;
-        max-width: 100%;
+        max-width: calc(100vw - 48px);
+        min-width: 0;
+      }
+
+      #pageCounter {
+        top: max(12px, env(safe-area-inset-top));
+        right: max(12px, env(safe-area-inset-right));
+        font-size: 0.8rem;
+        padding: 8px 14px;
+      }
+
+      footer {
+        margin-top: 40px;
+        padding: 28px 16px;
+      }
+
+      footer p {
+        font-size: 1.75rem;
+        padding: 0 12px;
+      }
+
+      .popup-box {
+        margin: 16px;
+        padding: 28px 22px;
+        max-width: calc(100vw - 32px);
+      }
+
+      .popup-no .popup-box {
+        max-width: calc(100vw - 32px);
       }
     }
 
-    /* Mobile-first safe areas and touch */
-    @media (max-width: 768px) {
-      body {
-        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
-      }
-      .page {
-        padding-left: max(clamp(10px, 3vw, 20px), env(safe-area-inset-left));
-        padding-right: max(clamp(10px, 3vw, 20px), env(safe-area-inset-right));
-        padding-bottom: max(clamp(25px, 5vw, 40px), env(safe-area-inset-bottom));
-      }
-      .btn, .btn-no {
-        min-height: 48px;
-        padding-top: 12px;
-        padding-bottom: 12px;
-      }
-    }
-
+    /* Small phones (e.g. iPhone SE, small Android) */
     @media (max-width: 480px) {
       .page {
-        padding-left: max(8px, env(safe-area-inset-left));
-        padding-right: max(8px, env(safe-area-inset-right));
+        padding: 12px;
+        padding-top: max(48px, calc(12px + env(safe-area-inset-top)));
+        padding-bottom: max(24px, calc(12px + env(safe-area-inset-bottom)));
+        padding-left: max(12px, env(safe-area-inset-left));
+        padding-right: max(12px, env(safe-area-inset-right));
       }
+
+      h1 {
+        font-size: 2.25rem;
+        margin-bottom: 20px;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        padding: 0 8px;
+      }
+
+      .intro-text {
+        font-size: 1rem;
+        margin-bottom: 28px;
+      }
+
       .love-card {
-        margin-left: max(8px, env(safe-area-inset-left));
-        margin-right: max(8px, env(safe-area-inset-right));
+        padding: 20px 16px;
+        margin: 16px 0;
+        width: calc(100% - 20px);
+      }
+
+      .love-card p {
+        font-size: 0.95rem;
+        line-height: 1.75;
+      }
+
+      .romantic-quote {
+        font-size: 1.1rem;
+        padding: 18px 16px;
+      }
+
+      .gallery img {
+        height: 220px;
+      }
+
+      .btn {
+        padding: 14px 24px;
+        font-size: 0.95rem;
+        min-width: 160px;
+        max-width: calc(100vw - 40px);
+      }
+
+      .btn-group .btn,
+      .btn-group .btn-no {
+        max-width: calc(100vw - 40px);
+      }
+
+      footer p {
+        font-size: 1.5rem;
+      }
+
+      .popup-box {
+        padding: 24px 18px;
+        margin: 12px;
+        max-width: calc(100vw - 24px);
+      }
+    }
+
+    /* Extra small (320px - 360px) */
+    @media (max-width: 380px) {
+      .page {
+        padding: 10px;
+        padding-top: max(44px, calc(10px + env(safe-area-inset-top)));
+        padding-left: max(10px, env(safe-area-inset-left));
+        padding-right: max(10px, env(safe-area-inset-right));
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.35rem;
+      }
+
+      .love-card {
+        padding: 18px 14px;
+        width: calc(100% - 16px);
+      }
+
+      .love-card p {
+        font-size: 0.9rem;
+      }
+
+      .btn {
+        font-size: 0.9rem;
+        padding: 12px 20px;
+        min-width: 140px;
+      }
+
+      .memory-item p {
+        font-size: 0.9rem;
+      }
+
+      .romantic-quote {
+        font-size: 1rem;
+        padding: 16px 14px;
+      }
+
+      .gallery img {
+        height: 200px;
+      }
+    }
+
+    /* Safe area for notched devices */
+    @media (max-width: 768px) {
+      .btn, .btn-no {
+        min-height: 48px;
       }
     }
 
