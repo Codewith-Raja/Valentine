@@ -553,6 +553,39 @@
       letter-spacing: 0.3px;
     }
 
+    /* No-button popup (you have no option) */
+    .popup-no .popup-box {
+      max-width: min(420px, 92vw);
+      padding: clamp(28px, 6vw, 40px);
+    }
+    .popup-no .popup-box p {
+      font-size: clamp(1rem, 2.8vw, 1.2rem);
+      margin-bottom: 25px;
+    }
+    .btn-no {
+      background: linear-gradient(135deg, #ff9a9e, #ff6b9d);
+      color: #fff;
+      padding: 14px 28px;
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
+      min-width: 140px;
+      min-height: 46px;
+    }
+    .btn-no:hover {
+      background: linear-gradient(135deg, #ff6b9d, #ff1744);
+      color: #fff;
+    }
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: clamp(12px, 3vw, 20px);
+      justify-content: center;
+      align-items: center;
+      margin-top: clamp(25px, 5vw, 40px);
+    }
+    .btn-group .btn {
+      margin-top: 0;
+    }
+
     /* Confetti effect - enhanced */
     .confetti {
       position: fixed;
@@ -686,6 +719,17 @@
         margin-top: clamp(20px, 4vw, 35px);
       }
 
+      .btn-group {
+        flex-direction: column;
+        gap: 14px;
+        margin-top: clamp(20px, 4vw, 35px);
+      }
+      .btn-group .btn,
+      .btn-group .btn-no {
+        width: 100%;
+        max-width: min(280px, 92vw);
+      }
+
       footer {
         margin-top: clamp(30px, 6vw, 50px);
         padding: clamp(25px, 5vw, 35px) clamp(15px, 3vw, 20px);
@@ -741,6 +785,11 @@
         font-size: clamp(1rem, 4.5vw, 1.25rem);
       }
 
+      .page-subtitle {
+        font-size: clamp(0.95rem, 4vw, 1.1rem);
+        margin-bottom: clamp(20px, 4vw, 35px);
+      }
+
       .memory-item {
         padding: clamp(15px, 3vw, 18px) clamp(15px, 3vw, 20px);
       }
@@ -768,6 +817,45 @@
         min-width: clamp(140px, 60vw, 180px);
         font-size: clamp(0.8rem, 3.5vw, 0.95rem);
       }
+
+      .btn-group {
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .btn-group .btn,
+      .btn-group .btn-no {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+
+    /* Mobile-first safe areas and touch */
+    @media (max-width: 768px) {
+      body {
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+      }
+      .page {
+        padding-left: max(clamp(10px, 3vw, 20px), env(safe-area-inset-left));
+        padding-right: max(clamp(10px, 3vw, 20px), env(safe-area-inset-right));
+        padding-bottom: max(clamp(25px, 5vw, 40px), env(safe-area-inset-bottom));
+      }
+      .btn, .btn-no {
+        min-height: 48px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page {
+        padding-left: max(8px, env(safe-area-inset-left));
+        padding-right: max(8px, env(safe-area-inset-right));
+      }
+      .love-card {
+        margin-left: max(8px, env(safe-area-inset-left));
+        margin-right: max(8px, env(safe-area-inset-right));
+      }
     }
 
     /* Smooth scroll */
@@ -783,6 +871,14 @@
 
     .hidden {
       display: none !important;
+    }
+
+    .page-subtitle {
+      font-size: clamp(1rem, 2.8vw, 1.25rem);
+      margin-bottom: clamp(25px, 5vw, 40px);
+      opacity: 0.95;
+      font-weight: 300;
+      letter-spacing: 0.5px;
     }
 
     /* Footer styling */
@@ -805,24 +901,24 @@
 
   <!-- Page 1: Cover -->
   <div class="page page-header active" id="page1">
-    <h1>Prativa ❤️</h1>
-    <p class="intro-text">This is not a website.<br>This is how my heart speaks to you.</p>
+    <h1>Prativa ❤️💕</h1>
+    <p class="intro-text">This is not a website. 💖<br>This is how my heart speaks to you. ✨</p>
     <a class="btn" onclick="nextPage()" role="button">Begin Our Story 💖</a>
   </div>
 
   <!-- Page 2: Why You Matter -->
   <div class="page" id="page2">
-    <h2>Why You Matter To Me</h2>
+    <h2>Why You Matter To Me 💗</h2>
     <div class="love-card">
       <p>
-        Prativa, my betu — your <b>care</b> makes me feel protected,
+        Prativa, my betu 💕 — your <b>care</b> makes me feel protected,
         your <b>love</b> gives my life meaning,
         your <b>loyalty</b> gives me trust,
-        and your <b>respect</b> gives me dignity.
+        and your <b>respect</b> gives me dignity. ✨
         <br><br>
         I don't want perfect love.
         <br>
-        I want real love — and that is you.
+        I want real love — and that is you. 💖
       </p>
     </div>
     <a class="btn" onclick="nextPage()" role="button">Continue 💕</a>
@@ -830,20 +926,20 @@
 
   <!-- Page 3: What You Mean -->
   <div class="page" id="page3">
-    <h2>What You Mean To Me</h2>
+    <h2>What You Mean To Me 💖</h2>
     <div class="love-card">
       <p>
-        You are not just my girlfriend.
+        You are not just my girlfriend. 💗
         <br><br>
-        You are my <b>best friend</b> — the one I can tell everything to.
+        You are my <b>best friend</b> 💕 — the one I can tell everything to.
         <br>
-        You are my <b>peace</b> — the calm in my storm.
+        You are my <b>peace</b> 🌸 — the calm in my storm.
         <br>
-        You are my <b>strength</b> — the reason I believe in myself.
+        You are my <b>strength</b> 💪❤️ — the reason I believe in myself.
         <br>
-        You are my <b>home</b> — wherever you are, I belong.
+        You are my <b>home</b> 🏠💖 — wherever you are, I belong.
         <br><br>
-        You are my everything, Prativa.
+        You are my everything, Prativa. 💞✨
       </p>
     </div>
     <a class="btn" onclick="nextPage()" role="button">Tell Me More 💖</a>
@@ -851,8 +947,8 @@
 
   <!-- Page 4: Memories -->
   <div class="page" id="page4">
-    <h2>Moments I Keep In My Heart</h2>
-    <p style="font-size: clamp(1.1rem, 3vw, 1.3rem); margin-bottom: 40px; opacity: 0.95; font-weight: 300; letter-spacing: 0.5px;">Not for the world. Just for us.</p>
+    <h2>Moments I Keep In My Heart 💝</h2>
+    <p class="page-subtitle">Not for the world. Just for us. ✨💕</p>
     <div class="memory-list">
       <div class="memory-item">
         <p>💕 Every time you smile, my world lights up</p>
@@ -875,19 +971,19 @@
 
   <!-- Page 5: Gallery -->
   <div class="page" id="page5">
-    <h2>Our Beautiful Moments</h2>
+    <h2>Our Beautiful Moments 💖✨</h2>
     <div class="gallery">
       <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&h=400&fit=crop" alt="Beautiful moment" loading="lazy" />
       <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=400&h=400&fit=crop" alt="Special memory" loading="lazy" />
       <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&h=400&fit=crop" alt="Cherished time" loading="lazy" />
     </div>
-    <p class="romantic-quote">"In your smile, I see something more beautiful than the stars."</p>
+    <p class="romantic-quote">"In your smile, I see something more beautiful than the stars. ✨💕"</p>
     <a class="btn" onclick="nextPage()" role="button">Continue Our Story 💖</a>
   </div>
 
   <!-- Page 6: Promises -->
   <div class="page" id="page6">
-    <h2>My Promises To You</h2>
+    <h2>My Promises To You 💗</h2>
     <div class="love-card">
       <p>
         I promise to <b>love you</b> every single day, even when it's hard.
@@ -906,7 +1002,7 @@
 
   <!-- Page 7: Forever -->
   <div class="page" id="page7">
-    <h2>Forever Starts Today</h2>
+    <h2>Forever Starts Today 💞</h2>
     <div class="love-card">
       <p>
         I don't know what the future holds.
@@ -922,64 +1018,76 @@
         It's choosing each other, every single day.
       </p>
     </div>
-    <p class="romantic-quote">"You are my today and all of my tomorrows."</p>
+    <p class="romantic-quote">"You are my today and all of my tomorrows. 💖✨"</p>
     <a class="btn" onclick="nextPage()" role="button">Continue 💖</a>
   </div>
 
   <!-- Page 8: The Question -->
   <div class="page" id="page8">
-    <h2>A Question From My Heart</h2>
+    <h2>A Question From My Heart 💕</h2>
     <div class="love-card">
       <p>
-        Prativa, my betu…
+        Prativa, my betu… 💗
         <br><br>
         Will you keep choosing us?
         <br><br>
-        With <b>care</b>, <b>love</b>, <b>loyalty</b>, and <b>respect</b>?
+        With <b>care</b>, <b>love</b>, <b>loyalty</b>, and <b>respect</b>? ✨
         <br><br>
         Not just today, but every tomorrow?
         <br><br>
-        Will you be my Valentine — today and always?
+        Will you be my Valentine — today and always? 💖
       </p>
     </div>
-    <a class="btn" onclick="openPopup()" role="button">Yes, I Choose You ❤️</a>
+    <div class="btn-group">
+      <a class="btn" onclick="openPopup()" role="button">Yes, I Choose You ❤️💕</a>
+      <a class="btn btn-no" onclick="openNoPopup()" role="button">No 😢</a>
+    </div>
   </div>
 
   <!-- Page 9: Final Message -->
   <div class="page" id="page9">
-    <h2>You Are My Safe Place 💞</h2>
+    <h2>You Are My Safe Place 💞✨</h2>
     <div class="love-card">
       <p>
-        Thank you for choosing me.
+        Thank you for choosing me. 💕
         <br>
-        Thank you for trusting my heart.
+        Thank you for trusting my heart. 💗
         <br><br>
-        I will protect your feelings.
+        I will protect your feelings. 🛡️❤️
         <br>
-        I will respect your dreams.
+        I will respect your dreams. ✨
         <br>
-        I will stay loyal to us.
+        I will stay loyal to us. 💖
         <br><br>
         This is not the end.
         <br>
-        <b>This is the beginning of our forever.</b>
+        <b>This is the beginning of our forever. 💞</b>
       </p>
     </div>
     <p class="romantic-quote">
-      "You are my today and all of my tomorrows."
+      "You are my today and all of my tomorrows. 💕✨"
     </p>
     <footer>
-      <p>Prativa, Will You Be My Valentine — Today & Always? ❤️</p>
+      <p>Prativa, Will You Be My Valentine — Today & Always? ❤️💖</p>
     </footer>
   </div>
 
-  <!-- Popup -->
+  <!-- Popup (Yes) -->
   <div class="popup" id="popup" role="dialog" aria-labelledby="popup-title" aria-modal="true">
     <div class="popup-box">
-      <h2 id="popup-title">Prativa ❤️</h2>
-      <p>Betu, will you walk with me — with care, love, loyalty, and respect — not just today, but every tomorrow?</p>
+      <h2 id="popup-title">Prativa ❤️💕</h2>
+      <p>Betu, will you walk with me — with care, love, loyalty, and respect — not just today, but every tomorrow? 💖</p>
       <br />
       <a class="btn" onclick="yesAnswer()" role="button">Yes, I Choose You Forever 💖</a>
+    </div>
+  </div>
+
+  <!-- Popup (No - you have no option) -->
+  <div class="popup popup-no" id="popupNo" role="dialog" aria-labelledby="popup-no-title" aria-modal="true">
+    <div class="popup-box">
+      <h2 id="popup-no-title">Nice try! 😄💕</h2>
+      <p id="noPopupMessage">You have no option! The only answer is Yes! 💖</p>
+      <a class="btn btn-no" onclick="closeNoPopup()" role="button">OK, fine! 💖</a>
     </div>
   </div>
 
@@ -1064,7 +1172,7 @@
       }
     }
 
-    // Open popup
+    // Open popup (Yes)
     function openPopup() {
       createSparkle(event?.clientX || window.innerWidth / 2, event?.clientY || window.innerHeight / 2);
       const popup = document.getElementById('popup');
@@ -1073,6 +1181,46 @@
         document.body.style.overflow = 'hidden';
         document.body.style.position = 'fixed';
         document.body.style.width = '100%';
+      }
+    }
+
+    // No-button messages (rotating fun messages - she has no option!)
+    const noPopupMessages = [
+      "You have no option! The only answer is Yes! 💖",
+      "Nice try! But nope — you have to say Yes! 😄💕",
+      "This button is just for fun! Say Yes, betu! 💗",
+      "There's only one way forward — Yes! ✨💖",
+      "I made this page — no escape! Yes is the way! 😊💕",
+      "Your heart already said Yes! Just click it! 💞",
+      "Try again… and pick Yes this time! 💖",
+      "No doesn't work here! Only Yes! 😄💗",
+      "You're stuck until you say Yes! 💕✨",
+      "Yes, Yes, Yes! That's the only option! 💖"
+    ];
+    let noClickCount = 0;
+
+    function openNoPopup() {
+      const popupNo = document.getElementById('popupNo');
+      const msgEl = document.getElementById('noPopupMessage');
+      const titleEl = document.getElementById('popup-no-title');
+      if (!popupNo || !msgEl) return;
+      noClickCount++;
+      var titles = ["Nice try! 😄💕", "Nope! 💖", "Try again! 😊", "Yes is the way! 💗", "You have no option! 😄"];
+      titleEl.textContent = titles[(noClickCount - 1) % titles.length];
+      msgEl.textContent = noPopupMessages[(noClickCount - 1) % noPopupMessages.length];
+      popupNo.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+    }
+
+    function closeNoPopup() {
+      const popupNo = document.getElementById('popupNo');
+      if (popupNo) {
+        popupNo.classList.remove('active');
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.width = '';
       }
     }
 
@@ -1119,10 +1267,20 @@
         document.body.style.width = '';
       }
     });
+    document.getElementById('popupNo')?.addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeNoPopup();
+      }
+    });
 
     // Close popup with Escape key
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
+        const popupNo = document.getElementById('popupNo');
+        if (popupNo && popupNo.classList.contains('active')) {
+          closeNoPopup();
+          return;
+        }
         const popup = document.getElementById('popup');
         if (popup && popup.classList.contains('active')) {
           popup.classList.remove('active');
